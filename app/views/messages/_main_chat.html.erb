@@ -18,13 +18,14 @@
   </div>
   <div class="message">Good morning!!</div>
 </div>
-<div class="main_bottom">
+
+<%= form_with model: [@room, @message], class: 'main_bottom', local: true do |f|%>
   <div class="form">
-    <input class="form_message" placeholder="type a message">
+    <%=f.text_field :content, class: "form_message", placeholder: "type a message"%>
     <label>
       <span class="form_image">画像</span>
-      <input type="file" class="file">
+      <%= f.file_field :image, class: "file"%>
     </label>  
   </div>
-  <input class="form_send" type="submit" value="送信">
-</div>
+  <%= f.submit '送信', class: "form_send" %>
+<% end %>
